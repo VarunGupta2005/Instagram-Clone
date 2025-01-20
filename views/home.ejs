@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1></h1>
+    <script>
+        const node = document.createTextNode("ok");
+        const user = JSON.parse('<%- JSON.stringify(user) %>');
+        console.log(user);
+        if (user) {
+            node.textContent = 'Welcome, ' + user.username;
+            document.body.getElementsByTagName('h1')[0].appendChild(node);
+        } else {
+            node.textContent = "Not logged in";
+            document.body.getElementsByTagName('h1')[0].appendChild(node);
+        }
+    </script>
+</body>
+</html>

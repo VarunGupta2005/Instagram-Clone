@@ -1,12 +1,16 @@
 const express = require("express")
+const cookieParser = require("cookie-parser")
 const app = express()
 const port = 3000
 const mongoose= require('mongoose')
 const signup = require('./routes/signup')
+const signin = require('./routes/signin')
+const home = require("./routes/home")
 const cors = require("cors")
 
 app.use(cors())
 app.use(express.urlencoded({extended:true}))
+app.use(cookieParser())
 
 mongoose.connect("mongodb://127.0.0.1:27017/ChatApp")
 .then(()=>{
@@ -15,7 +19,8 @@ mongoose.connect("mongodb://127.0.0.1:27017/ChatApp")
 
 
 app.use('/signup',signup)
-app.use('/Chat',)
+app.use('/',home)
+app.use('/signin',signin)
 
 
 app.listen(port,()=>{
