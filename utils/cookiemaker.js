@@ -7,7 +7,7 @@ const token = jwt.sign({
   username : User.username,
   email : User.email
 },key);
-res.cookie("ChatAppCookie", token);
+res.cookie("ChatAppCookie", token,{maxAge:360000000000});
 }
 
 function checkCookie(req){

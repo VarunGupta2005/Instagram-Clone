@@ -16,7 +16,7 @@ async function signup(req, res) {
     res.redirect("/");
   } catch (error) {
     if (error.code === 11000) {
-      res.send(
+      res.status(400).send(
         `<script>
       alert("User already exists - Username or email already in use");
       window.location.href = "/signup";
@@ -25,7 +25,7 @@ async function signup(req, res) {
     }
     else
     {
-      res.send(
+      res.status(500).send(
         `<script>
       alert("An error occured. Please try again");
       window.location.href = "/signup";

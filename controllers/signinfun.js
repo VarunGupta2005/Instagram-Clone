@@ -7,14 +7,14 @@ async function signin(req, res)  {
   const { username, password } = req.body;
   const user = await User.findOne({ username: username });
   if (!user) {
-    res.send(`<script>
+    res.status(400).send(`<script>
       alert("User does not exist - Incorrect username")
       window.location.href = "/signin"
       </script>`);
   } else{
     const comp = await compare(password,user.password);
     if (comp===false) {
-      res.end(`<script>
+      res.status(400).end(`<script>
         alert("Incorrect Password")
         window.location.href = "/signin"
         </script>`);
@@ -24,7 +24,7 @@ async function signin(req, res)  {
   }
 }
 }catch{
-  res.send(`<script>
+  res.status(500).send(`<script>
     alert("An error occured - Please try again")
     window.location.href = "/signin"
     </script>`)

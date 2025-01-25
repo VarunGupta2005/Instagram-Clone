@@ -6,7 +6,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
     unique: true
-  },
+  }, 
   password: {
     type: String,
     required: true
@@ -16,6 +16,10 @@ const userSchema = new Schema({
     required: true,
     unique: true
   },
+  resetTokenVersion: {
+    type: Number,
+    default: 0
+  }
   // posts: {},
   // reels: {},
   // liked: {}
