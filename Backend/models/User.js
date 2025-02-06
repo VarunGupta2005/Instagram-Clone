@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
-
 const userSchema = new Schema(
   {
     username: {
@@ -55,6 +54,17 @@ const userSchema = new Schema(
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Post",
+      },
+    ],
+    privacy: {
+      type: String,
+      enum: ["public", "private"], // Account privacy settings
+      default: "public", // Default is public
+    },
+    followRequests: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
       },
     ],
   },

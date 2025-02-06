@@ -1,8 +1,29 @@
-import { checkCookie } from "../utils/Auth";
+import getDataUri from "../utils/dataUri.js";
+import upload from "../utils/cloudinary.js";
+import User from "../models/User.js";
 
-async function editProfile(req,res){
-  const user = checkCookie(req);
 
+//can add the use of cookie to validate the editProfile request
+async function editProfile(req, res) {
+  try {
+    const { username, bio, gender } = req.body;
+    const profilePicture = req.file;
+    const user = await User.findOne({ username: username });
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+    if (bio) user.bio = bio;
+    if (gender) user.gender = gender;
+    if (profilePicture) {
+      const fileUri = getDataUri(profilePicture);
+      const cloudResponse = await upload(fileUri);
+      user.profilePicture = cloudResponse.secure_url;
+    }
+    await user.save();
+    res.status(200).send("User updated successfully")
+  } catch (err) {
+    console.log(err);
+  }
 }
 
-export {editProfile};
+export { editProfile };
