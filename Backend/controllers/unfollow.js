@@ -7,21 +7,14 @@ export default async function unfollow(req, res) {
       return res.status(400).json({ message: "Cannot unfollow self" });
     }
     const [follower, followed] = await Promise.all([
-      User.findOne({ username: followerId }),
-      User.findOne({ username: followedId }),
+      User.findOne({ username: followerId }).select("_id following"),
+      User.findOne({ username: followedId }).select("_id"),
     ]);
     if (!follower || !followed) {
       return res.status(404).json({ message: "Not found" });
     }
     if (follower.following.some((id) => id.equals(followed._id))) {
-      // check in followers following list for the followed user
-      follower.following = follower.following.filter(
-        (id) => !id.equals(followed._id)
-      ); // remove from followers following
-      followed.followers = followed.followers.filter(
-        (id) => !id.equals(follower._id)
-      ); // remove from followed accounts followers
-      await Promise.all([follower.save(), followed.save()]);
+      await Promise.all([User.updateOne({_id:follower._id},{$pull:{following: followed._id}}), User.updateOne({_id:followed._id},{$pull: {followers: follower._id}})]);
       return res.status(200).json({ message: "Unfollowed successfully" });
     } else {
       res.status(400).json({ message: "Not followed" });

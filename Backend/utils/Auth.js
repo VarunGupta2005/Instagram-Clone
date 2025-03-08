@@ -1,5 +1,8 @@
 import jwt from "jsonwebtoken";
-const key = "$34333@###";
+import dotenv from "dotenv";
+dotenv.config();
+
+const key = process.env.JWT_SECRET_KEY;
 
 // returns user if cookie is valid else returns null
 function checkCookie(req) {

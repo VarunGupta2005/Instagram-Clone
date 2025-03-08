@@ -7,8 +7,8 @@ export default async function manageReq(req, res) {
       return res.status(400).json({ message: "Cannot follow/unfollow self" });
     }
     const [follower, followed] = await Promise.all([
-      User.findOne({ username: followerId }),
-      User.findOne({ username: followedId }),
+      User.findOne({ username: followerId }).select("_id following"),
+      User.findOne({ username: followedId }).select("_id followRequests followers"),
     ]);
     if (!follower || !followed)
       return res.status(400).json({ message: "Could not find such user" });
@@ -18,7 +18,7 @@ export default async function manageReq(req, res) {
         follower.following.push(followed._id);
       }
       followed.followRequests = followed.followRequests.filter(
-        (id) => !id.equals(follower._id)
+        (id) => !id.equals(follower._id) 
       );
       await Promise.all([followed.save(), follower.save()]);
       if (status)

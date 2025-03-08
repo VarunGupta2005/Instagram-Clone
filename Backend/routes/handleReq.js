@@ -3,6 +3,6 @@ import handleRequest from "../controllers/managereq.js";
 
 const router = express.Router();
 
-router.get("/", handleRequest);
+router.patch("/", handleRequest);
 
 export default router;

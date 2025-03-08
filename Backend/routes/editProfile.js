@@ -1,7 +1,6 @@
 import express from 'express'
-import unfollow from '../controllers/unfollow.js'
+import editProfile from '../controllers/editProfile.js'
 const router = express.Router();
-
-router.patch('/',unfollow);
+router.post('/',editProfile);
 
 export default router;

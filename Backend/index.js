@@ -13,6 +13,8 @@ import dotenv from "dotenv";
 import follow from "./routes/follow.js";
 import unfollow from "./routes/unfollow.js";
 import handleRequest from "./routes/handleReq.js";
+import suggestions from "./routes/suggestions.js";
+import editProfile from "./routes/editProfile.js";
 
 const app = express();
 const port = 3000;
@@ -36,6 +38,8 @@ app.use("/reset-password", reset);
 app.use("/follow", follow);
 app.use("/unfollow", unfollow);
 app.use("/handleRequest", handleRequest);
+app.use("/getSuggestions", suggestions);
+app.use("/editProfile", editProfile);
 
 app.use((err, req, res, next) => {
   res.send("Oki");

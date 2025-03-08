@@ -1,7 +1,8 @@
 import nodemailer from "nodemailer";
 import User from "../models/User.js";
 import jwt from "jsonwebtoken";
-
+import dotenv from "dotenv"
+dotenv.config()
 
 
 const transporter = nodemailer.createTransport({
@@ -9,8 +10,8 @@ const transporter = nodemailer.createTransport({
   port: 587,
   secure: false, 
   auth: {
-    user: "mlrccntmail@gmail.com",
-    pass: "nomo yqvy zjlo setu",
+    user: process.env.MAIL_USERNAME,
+    pass: process.env.MAIL_PASSWORD,
   },
 });
 
