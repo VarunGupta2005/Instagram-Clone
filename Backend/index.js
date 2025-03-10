@@ -15,6 +15,7 @@ import unfollow from "./routes/unfollow.js";
 import handleRequest from "./routes/handleReq.js";
 import suggestions from "./routes/suggestions.js";
 import editProfile from "./routes/editProfile.js";
+import removeFollower from "./routes/removeFollower.js";
 
 const app = express();
 const port = 3000;
@@ -30,16 +31,17 @@ mongoose.connect("mongodb://127.0.0.1:27017/ChatApp").then(() => {
   console.log("Mongodb connected");
 });
 
-app.use("/signup", signup);
+app.use("/user/signup", signup);
 app.use("/", home);
-app.use("/signin", signin);
-app.use("/forgot", forgot);
-app.use("/reset-password", reset);
-app.use("/follow", follow);
-app.use("/unfollow", unfollow);
-app.use("/handleRequest", handleRequest);
-app.use("/getSuggestions", suggestions);
-app.use("/editProfile", editProfile);
+app.use("/user/signin", signin);
+app.use("/user/forgot", forgot);
+app.use("/user/reset-password", reset);
+app.use("/user/follow", follow);
+app.use("/user/unfollow", unfollow);
+app.use("/user/handleRequest", handleRequest);
+app.use("/user/getSuggestions", suggestions);
+app.use("/user/editProfile", editProfile);
+app.use("/user/removeFollower",removeFollower);
 
 app.use((err, req, res, next) => {
   res.send("Oki");

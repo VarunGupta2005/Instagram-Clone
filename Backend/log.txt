@@ -1,0 +1,3 @@
+added authenticate middleware to all the important api calls to ensure that only a validated user makes follow unfollow getSuggestion etc requests
+
+check the working

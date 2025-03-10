@@ -5,7 +5,8 @@ import User from "../models/User.js";
 //can add the use of cookie to validate the editProfile request
 async function editProfile(req, res) {
   try {
-    const { username, bio, gender, privacy } = req.body;
+    const username = req.username;
+    const { bio, gender, privacy } = req.body;
     const profilePicture = req.file;
     const user = await User.findOne({ username: username });
     if (!user) {

@@ -2,7 +2,8 @@ import User from "../models/User.js";
 
 async function follow(req, res) {
   try {
-    const { followerId, followedId } = req.body;
+    const followerId = req.username;
+    const { followedId } = req.body;
     if (followerId === followedId) {
       return res.status(400).json({ message: "Cannot follow self" });
     }

@@ -2,7 +2,8 @@ import User from "../models/User.js";
 
 export default async function manageReq(req, res) {
   try {
-    const { followerId, followedId, status } = req.body;
+    const followedId = req.username;
+    const {followerId, status } = req.body;
     if (followerId === followedId) {
       return res.status(400).json({ message: "Cannot follow/unfollow self" });
     }

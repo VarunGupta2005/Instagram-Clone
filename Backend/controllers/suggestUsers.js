@@ -2,7 +2,7 @@ import User from "../models/User.js";
 
 export default async function getSuggestedUsers(req, res) {
   try {
-    const { username } = req.body;
+    const username = req.username;
     if (!username)
       return res.status(404).json({ message: "no username provided" });
     const user = await User.findOne({ username: username }).select("_id");

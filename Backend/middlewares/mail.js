@@ -35,7 +35,7 @@ async function Mail(req,res,next){
   let userTokenVersion = user.resetTokenVersion;
   userTokenVersion=userTokenVersion+1;
   const token = jwt.sign({email: email,resetTokenVersion:userTokenVersion},process.env.RESET_SECRET_KEY,{expiresIn:"1h"});//token for reset password
-  const link = `http://localhost:3000/reset-password/${token}`;//link to reset password page
+  const link = `http://localhost:3000/user/reset-password/${token}`;//link to reset password page
   let mailOptions = {
     from: '"Chat App" <mlrccntmail@gmail.com>',
     to:["id47@gmail.com"], 
