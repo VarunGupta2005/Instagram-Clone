@@ -9,9 +9,9 @@ cloudinary.config({
 });
 
 async function upload(link) {
-  cloudinary.uploader
+  return cloudinary.uploader
     .upload(link)
-    .then((result) => console.log(result))
+    .then((result) => result)
     .catch((err) => console.log(err));
 }
 

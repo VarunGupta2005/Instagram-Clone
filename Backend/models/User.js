@@ -67,6 +67,10 @@ const userSchema = new Schema(
         ref: "User",
       },
     ],
+    conversations: [{
+      conversationId: { type: mongoose.Schema.Types.ObjectId, ref: "Conversation" },
+      timeWindow: [{ start: { type: Date }, end: { type: Date, default: null } }]
+    }]
   },
   { timestamps: true }
 );
