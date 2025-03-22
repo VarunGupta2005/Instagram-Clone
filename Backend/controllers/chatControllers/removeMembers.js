@@ -1,5 +1,5 @@
-import User from "../models/User.js";
-import Conversation from "../models/Conversation.js";
+import User from "../../models/User.js";
+import Conversation from "../../models/Conversation.js";
 
 export default async function removeMember(req, res) {
   try {

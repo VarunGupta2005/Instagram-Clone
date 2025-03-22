@@ -1,9 +1,9 @@
-import User from "../models/User.js";
+import User from "../../models/User.js";
 
 export default async function manageReq(req, res) {
   try {
     const followedId = req.username;
-    const {followerId, status } = req.body;
+    const { followerId, status } = req.body;
     if (followerId === followedId) {
       return res.status(400).json({ message: "Cannot follow/unfollow self" });
     }
@@ -19,7 +19,7 @@ export default async function manageReq(req, res) {
         follower.following.push(followed._id);
       }
       followed.followRequests = followed.followRequests.filter(
-        (id) => !id.equals(follower._id) 
+        (id) => !id.equals(follower._id)
       );
       await Promise.all([followed.save(), follower.save()]);
       if (status)

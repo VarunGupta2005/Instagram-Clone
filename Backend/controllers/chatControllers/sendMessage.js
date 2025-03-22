@@ -1,6 +1,6 @@
-import Message from '../models/Message.js';
-import Conversation from '../models/Conversation.js';
-import User from '../models/User.js';
+import Message from '../../models/Message.js';
+import Conversation from '../../models/Conversation.js';
+import User from '../../models/User.js';
 
 
 export default async (req, res) => {

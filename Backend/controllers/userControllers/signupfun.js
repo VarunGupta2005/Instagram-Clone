@@ -1,5 +1,5 @@
-import User from "../models/User.js";
-import { hash, compare } from "../utils/hash.js";
+import User from "../../models/User.js";
+import { hash, compare } from "../../utils/hash.js";
 
 async function signup(req, res, next) {
   try {

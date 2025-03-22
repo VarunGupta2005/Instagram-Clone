@@ -1,20 +1,20 @@
 import express from 'express'
-import editProfile from '../controllers/editProfile.js'
+import editProfile from '../controllers/userControllers/editProfile.js'
 import upload from '../utils/multer.js'
 import authenticate from "../middlewares/auth.js"
-import follow from '../controllers/follow.js'
+import follow from '../controllers/userControllers/follow.js'
 import path from "path";
 import checkMail from '../middlewares/emailAuth.js';
 import sendMail from '../middlewares/mail.js';
 import { fileURLToPath } from "url";
-import handleRequest from "../controllers/managereq.js";
-import remove from '../controllers/removefollower.js'
-import reset from '../controllers/resetpass.js';
+import handleRequest from "../controllers/userControllers/managereq.js";
+import remove from '../controllers/userControllers/removefollower.js'
+import reset from '../controllers/userControllers/resetpass.js';
 import { createCookie } from '../middlewares/cookiemaker.js';
-import signin from "../controllers/signinfun.js";
-import signup from '../controllers/signupfun.js';
-import getSuggestedUsers from '../controllers/suggestUsers.js';
-import unfollow from '../controllers/unfollow.js';
+import signin from "../controllers/userControllers/signinfun.js";
+import signup from '../controllers/userControllers/signupfun.js';
+import getSuggestedUsers from '../controllers/userControllers/suggestUsers.js';
+import unfollow from '../controllers/userControllers/unfollow.js';
 
 
 const __filename = fileURLToPath(import.meta.url);

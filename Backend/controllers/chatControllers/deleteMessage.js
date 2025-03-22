@@ -1,6 +1,6 @@
-import Message from "../models/Message.js";
-import User from "../models/User.js";
-import Conversation from "../models/Conversation.js";
+import Message from "../../models/Message.js";
+import User from "../../models/User.js";
+import Conversation from "../../models/Conversation.js";
 
 export const deleteMessage = async (req, res) => {
   try {

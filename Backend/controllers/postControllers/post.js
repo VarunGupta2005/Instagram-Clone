@@ -1,6 +1,6 @@
-import User from "../models/User.js";
-import Post from "../models/Post.js";
-import upload from "../utils/cloudinary.js";
+import User from "../../models/User.js";
+import Post from "../../models/Post.js";
+import upload from "../../utils/cloudinary.js";
 import sharp from "sharp";
 
 async function createPost(req, res) {

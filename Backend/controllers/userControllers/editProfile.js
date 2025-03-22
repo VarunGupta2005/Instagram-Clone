@@ -1,6 +1,6 @@
- import getDataUri from "../utils/dataUri.js";
-import upload from "../utils/cloudinary.js";
-import User from "../models/User.js";
+import getDataUri from "../../utils/dataUri.js";
+import upload from "../../utils/cloudinary.js";
+import User from "../../models/User.js";
 
 //can add the use of cookie to validate the editProfile request
 async function editProfile(req, res) {
@@ -18,8 +18,7 @@ async function editProfile(req, res) {
     if (profilePicture) {
       const fileUri = getDataUri(profilePicture);
       const cloudResponse = await upload(fileUri);
-      if(!cloudResponse)
-      {
+      if (!cloudResponse) {
         return res.status(500).send("Error uploading image");
       }
       user.profilePicture = cloudResponse.secure_url;

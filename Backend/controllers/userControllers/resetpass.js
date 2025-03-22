@@ -1,6 +1,6 @@
-import User from "../models/User.js";
+import User from "../../models/User.js";
 import jwt from "jsonwebtoken";
-import { hash } from "../utils/hash.js";
+import { hash } from "../../utils/hash.js";
 
 async function reset(req, res) {
   const { token, password, confirmPassword } = req.body;

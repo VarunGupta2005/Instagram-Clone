@@ -1,6 +1,6 @@
-import User from "../models/User.js";
-import Conversation from "../models/Conversation.js";
-import Message from "../models/Message.js";
+import User from "../../models/User.js";
+import Conversation from "../../models/Conversation.js";
+import Message from "../../models/Message.js";
 
 export const sendGroupMessage = async (req, res) => {
   try {

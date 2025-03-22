@@ -1,6 +1,6 @@
-import User from "../models/User.js";
-import Comment from "../models/Comment.js";
-import Post from "../models/Post.js";
+import User from "../../models/User.js";
+import Comment from "../../models/Comment.js";
+import Post from "../../models/Post.js";
 
 export default async function deleteComment(req, res) {
   try {

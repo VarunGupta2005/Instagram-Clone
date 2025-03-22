@@ -1,4 +1,4 @@
-import User from "../models/User.js";
+import User from "../../models/User.js";
 
 async function getProfile(req, res) {
   const username = req.params.username;
