@@ -18,14 +18,14 @@ async function signup(req, res, next) {
       res.status(401).send(
         `<script>
       alert("User already exists - Username or email already in use");
-      window.location.href = "/signup";
+      window.location.href = "/user/signup";
       </script>`
       );
     } else {
       res.status(500).send(
         `<script>
       alert("An error occured. Please try again");
-      window.location.href = "/signup";
+      window.location.href = "/user/signup";
       </script>`
       );
     }

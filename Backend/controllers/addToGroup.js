@@ -1,5 +1,5 @@
-import User from "../models/User";
-import Conversation from "../models/Conversation";
+import User from "../models/User.js";
+import Conversation from "../models/Conversation.js";
 
 export default async function addMembers(req, res) {
   try {
