@@ -11,7 +11,10 @@ function createCookie(req, res, next) {
     email: User.email
   }, key, { expiresIn: "1d" });
   res.cookie("ChatAppCookie", token, { maxAge: 1 * 24 * 60 * 60 * 1000 });
-  res.redirect("/user");
+  res.status(200).json({
+    success: true,
+    message: "User signed in successfully"
+  });
 }
 
 

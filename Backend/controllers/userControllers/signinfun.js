@@ -6,27 +6,18 @@ async function signin(req, res, next) {
     const { email, password } = req.body;
     const user = await User.findOne({ email: email });
     if (!user) {
-      res.status(401).send(`<script>
-      alert("User does not exist - Incorrect email")
-      window.location.href = "/signin"
-      </script>`);
+      res.status(401).json({ success: false, message: "User does not exist" });
     } else {
       const comp = await compare(password, user.password);
       if (comp === false) {
-        res.status(401).end(`<script>
-        alert("Incorrect Password")
-        window.location.href = "/signin"
-        </script>`);
+        res.status(401).json({ success: false, message: "Incorrect password" });
       } else {
         req.body = user;
         next();
       }
     }
   } catch {
-    res.status(500).send(`<script>
-    alert("An error occured - Please try again")
-    window.location.href = "/signin"
-    </script>`);
+    res.status(500).json({ success: false, message: "Error in signing in" });
   }
 }
 export default signin;

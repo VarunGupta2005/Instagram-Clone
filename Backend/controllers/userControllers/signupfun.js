@@ -15,19 +15,9 @@ async function signup(req, res, next) {
     next();
   } catch (error) {
     if (error.code === 11000) {
-      res.status(401).send(
-        `<script>
-      alert("User already exists - Username or email already in use");
-      window.location.href = "/user/signup";
-      </script>`
-      );
+      res.status(401).json({ success: false, message: "User already exists" });
     } else {
-      res.status(500).send(
-        `<script>
-      alert("An error occured. Please try again");
-      window.location.href = "/user/signup";
-      </script>`
-      );
+      res.status(500).json({ success: false, message: "Error in creating user" });
     }
   }
 }
