@@ -5,7 +5,7 @@ dotenv.config();
 const key = process.env.JWT_SECRET_KEY;
 
 // adds username to request if cookie is valid else returns error
-function checkCookie(req,res,next) {
+function checkCookie(req, res, next) {
   const cookie = req.cookies.ChatAppCookie;
   if (cookie) {
     try {
@@ -13,10 +13,16 @@ function checkCookie(req,res,next) {
       req.username = token.username;
       next();
     } catch {
-      return next(new Error("Invalid token"));
+      return res.status(401).json({
+        success: false,
+        message: "Invalid authentication token"
+      });
     }
   } else {
-    return next(new Error("Authentication token is missing"));
+    return res.status(401).json({
+      success: false,
+      message: "No authentication token provided"
+    });
   }
 }
 

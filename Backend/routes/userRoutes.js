@@ -15,7 +15,7 @@ import signin from "../controllers/userControllers/signinfun.js";
 import signup from '../controllers/userControllers/signupfun.js';
 import getSuggestedUsers from '../controllers/userControllers/suggestUsers.js';
 import unfollow from '../controllers/userControllers/unfollow.js';
-
+import signout from '../controllers/userControllers/signout.js'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -35,6 +35,7 @@ router.get("/signin", (req, res) => { res.sendFile(path.join(__dirname, "../stat
 router.post("/signin", signin, createCookie);
 router.get('/signup', (req, res) => { res.sendFile(path.join(__dirname, '../static/signup.html')) })
 router.post('/signup', signup, createCookie);
+router.get('/signout', authenticate, signout);
 router.get('/getSuggestions', authenticate, getSuggestedUsers);
 router.patch('/unfollow', authenticate, unfollow);
 router.get('/reset-password/:token', (req, res) => {

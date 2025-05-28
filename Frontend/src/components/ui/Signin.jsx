@@ -22,7 +22,7 @@ const Signin = () => {
   }
   const handleSubmmit = async (e) => {
     e.preventDefault()
-    console.log(input)
+    // console.log(input)
     try {
        setLoading(true)
       const res = await axios.post("http://localhost:3000/user/signin",input,{
@@ -45,7 +45,7 @@ const Signin = () => {
   }
   return (
     <div className='flex items-center w-screen h-screen justify-center'>
-      <form onSubmit={handleSubmmit}  className = "shadow-lg flex flex-col gap-5 p-8">
+      <form onSubmit={handleSubmmit}  className = "dark:bg-[#1e1e1e] shadow-2xl rounded-xl flex flex-col gap-5 p-8">
         <div>
           <h1 className='text-center font-bold text-xl'>INSTAGRAM</h1>
           <p className = 'text-center text-sm'>Signin to dive into the world of Instagram</p>  

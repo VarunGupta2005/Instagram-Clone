@@ -25,7 +25,7 @@ const Signup = () => {
   const [load,setLoading] = useState(false)
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(input)
+    // console.log(input)
     try {
       setLoading(true)
       const res = await axios.post("http://localhost:3000/user/signup",input,{
@@ -47,7 +47,7 @@ const Signup = () => {
   }
   return (
     <div className='flex items-center w-screen h-screen justify-center'>
-      <form onSubmit={handleSubmit}  className = "shadow-lg flex flex-col gap-5 p-8">
+      <form onSubmit={handleSubmit}  className = "dark:bg-[#1e1e1e] shadow-2xl rounded-xl flex flex-col gap-5 p-8">
         <div>
           <h1 className='text-center font-bold text-xl'>INSTAGRAM</h1>
           <p className = 'text-center text-sm'>Signup to dive into the world of Instagram</p>  

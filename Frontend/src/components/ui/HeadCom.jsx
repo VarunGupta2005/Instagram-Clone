@@ -1,10 +1,10 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom';
+import { SideBar } from './SideBar';
 const HeadCom = () => {
   return (
-    <><div>
-      maincomp
-    </div>
+    <>
+    <SideBar />
     <Outlet /></>
     
   )

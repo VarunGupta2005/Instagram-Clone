@@ -1,12 +1,10 @@
 async function signout(req, res) {
   try {
     res.clearCookie("ChatAppCookie");
-    res.redirect("/signin");
+    res.status(200).json({ success: true, message: "Signed out successfully" });
   } catch (error) {
     console.log(error);
-    res.send(`<script>
-      alert("An error occured - Please try again")
-      </script>`);
+    res.status(500).json({ success: false, message: "Internal Server Error" });
   }
 }
 export default signout;
