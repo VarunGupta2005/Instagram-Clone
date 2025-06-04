@@ -118,3 +118,42 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* ... your existing global styles ... */
+
+/* Custom Scrollbar Styling */
+/* For Webkit-based browsers (Chrome, Safari, Edge) */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 30px; 
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent; 
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.custom-scrollbar {
+  scrollbar-width: auto; 
+  scrollbar-color: #888 transparent; 
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #555; 
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #333; 
+}
+
+.dark .custom-scrollbar {
+  scrollbar-color: #555 transparent; 
+}

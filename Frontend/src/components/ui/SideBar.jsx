@@ -73,7 +73,7 @@ const { isDarkMode, toggleDarkMode } = useTheme();
     }
   }
   return (
-    <div className='dark:text-white fixed w-[13%] border-r border-gray-300 dark:border-[#1e1e1e] dark:border-[3px] h-screen flex flex-col gap-4 top-0 left-0 z-10'>
+    <div className='dark:text-white w-[13%] border-r border-gray-300 dark:border-[#1e1e1e] dark:border-[3px] h-screen flex flex-col gap-4'>
       <h1 className='p-2 text-sm'>InstaGram</h1>
       {
         Items.map((item, index) => (
@@ -83,7 +83,7 @@ const { isDarkMode, toggleDarkMode } = useTheme();
           </div>
         ))
       }
-      <div onClick={toggleDarkMode} className="flex items-center gap-2 p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-md cursor-pointer mt-auto mb-4">
+      <div onClick={toggleDarkMode} className="flex items-center gap-2 p-2 hover:bg-gray-200 dark:hover:bg-[#1e1e1e] rounded-md cursor-pointer mt-auto mb-4">
         
         <span className="text-sm">{isDarkMode ? 'Light Mode' : 'Dark Mode'}</span>
       </div>
