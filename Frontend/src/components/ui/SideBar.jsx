@@ -1,7 +1,6 @@
 import React from 'react'
 import { Heart, Home, LogOut, MessageCircle, Search, TrendingUp, PlusSquare } from 'lucide-react'
-import profileIcon from '../../assets/profile.svg'
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar.jsx"
 import axios from 'axios'
 import { toast } from 'sonner'
 import { useNavigate } from 'react-router-dom'

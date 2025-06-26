@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Dialog, DialogContent } from './dialog';
+import { Dialog, DialogContent } from './dialog.jsx';
 import axios from 'axios';
-import { Button } from './button';
-import { Avatar, AvatarImage, AvatarFallback } from "./avatar";
+import { Button } from './button.jsx';
+import { Avatar, AvatarImage, AvatarFallback } from "./avatar.jsx";
 import { toast } from 'sonner';
 
 const Notifications = ({ setShowNots, showNots, user }) => {

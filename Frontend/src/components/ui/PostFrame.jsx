@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar.jsx"
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { Bookmark, MessageCircle, Send, MoreHorizontal } from 'lucide-react'
 import Comment from './Comment.jsx';

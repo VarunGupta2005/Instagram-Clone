@@ -3,7 +3,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
-import { SideBar } from './SideBar';
+import { SideBar } from './SideBar.jsx';
 
 const MainLayout = () => {
   // 1. Get user state and location (from ProtectedRoute)

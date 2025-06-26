@@ -3,7 +3,7 @@
 import useGetProfile from '@/hooks/useGetProfile';
 import React, { useState, useEffect } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Button } from './button';
+import { Button } from './button.jsx';
 import { Heart, MessageCircle, Bookmark, Lock } from 'lucide-react';
 import FullPost from './FullPost.jsx';
 import UserListDialog from './UserList.jsx';

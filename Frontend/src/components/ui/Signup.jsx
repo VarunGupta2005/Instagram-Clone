@@ -1,6 +1,6 @@
 import React, { use, useState } from 'react'
-import { Input } from './Input'
-import { Button } from './Button'
+import { Input } from './input.jsx'
+import { Button } from './button.jsx'
 import axios from 'axios'
 import { toast } from 'sonner'
 import { Link } from 'react-router-dom'
