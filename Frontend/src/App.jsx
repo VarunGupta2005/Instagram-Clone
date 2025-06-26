@@ -12,7 +12,7 @@ import { Home } from './components/ui/Home.jsx';
 import { Profile } from './components/ui/Profile.jsx';
 import RootLayout from './components/ui/root.jsx';
 import { EditProfile } from './components/ui/EditProfile.jsx';
-import Search from './components/ui/Search.jsx';
+import Search from './components/ui/search.jsx';
 import Message from './components/ui/Message.jsx';
 
 const router = createBrowserRouter([
