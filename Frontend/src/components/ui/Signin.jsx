@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Label } from './Label'
+import { Label } from './label'
 import { Input } from './Input'
 import { Button } from './Button'
 import axios from 'axios'

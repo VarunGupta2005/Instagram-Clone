@@ -1,5 +1,4 @@
 import React, { use, useState } from 'react'
-import { Label } from './Label'
 import { Input } from './Input'
 import { Button } from './Button'
 import axios from 'axios'
