@@ -6,7 +6,7 @@ async function getPosts(req, res) {
     const username = req.username;
     const user = await User.findOne({ username: username });
     const posts = await Post.find({ author: user._id }).sort({ createdAt: -1 })
-      .populate({ path: "author", select: "username profilePicture" })
+      .populate({ path: "author", select: "username profilePicture _id" })
       .populate({ path: "comments", sort: { createdAt: -1 }, select: "username profilePicture" });
     return res.status(200).send(posts);
   } catch {

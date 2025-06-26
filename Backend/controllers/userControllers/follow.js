@@ -15,10 +15,10 @@ async function follow(req, res) {
     ]);
 
     if (!followedUser || !follower) {
-      return res.status(404).json({ message: "Account not found" });
+      return res.status(404).json({ success: false, message: "Account not found" });
     }
 
-    if (followedUser.privacy === "public") {
+    if (followedUser.privacy === "Public") {
       //check privacy status
       if (!follower.following.some((id) => id.equals(followedUser._id))) {
         //if follower does not follow the account
@@ -34,24 +34,33 @@ async function follow(req, res) {
         ]);
         return res
           .status(200)
-          .json({ message: `Started following ${followedId}` });
+          .json({ success: true, message: `Started following ${followedId}` });
       } else {
         return res.status(400).json({
+          success: false,
           message: "Cannot follow as you are already following this account",
         });
       }
     } else {
-      await User.updateOne(
-        { _id: followedUser._id },
-        { $addToSet: { followRequests: follower._id } }
-      );
-      return res.status(200).json({ message: "Follow request sent" });
+      if (!follower.following.some((id) => id.equals(followedUser._id))) {
+        await User.updateOne(
+          { _id: followedUser._id },
+          { $addToSet: { followRequests: follower._id } }
+        );
+        return res.status(200).json({ success: true, message: "Follow request sent" });
+      }
+      else {
+        return res.status(400).json({
+          success: false,
+          message: "Cannot send follow request as you are already following this account",
+        });
+      }
     }
   } catch (err) {
     console.log(err);
     return res
       .status(500)
-      .json({ message: "Error occured while processing the request" });
+      .json({ success: false, message: "Error occured while processing the request" });
   }
 }
 

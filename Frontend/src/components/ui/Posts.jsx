@@ -1,11 +1,13 @@
 import React from 'react'
 import PostFrame from './PostFrame.jsx'
+import { useSelector } from 'react-redux'
 const Posts = () => {
+  const { posts } = useSelector((store) => store.post)
   return (
-    <div className='h-screen flex flex-col gap-1 items-center'>{
-      [1, 2, 3, 4, 5].map((post) => {
+    <div className='w-[75%] h-screen flex flex-col gap-1 items-center'>{
+      posts.map((post) => {
         return (
-          <PostFrame key={post} />
+          <PostFrame key={post._id} post={post} />
         )
       })
     }</div>

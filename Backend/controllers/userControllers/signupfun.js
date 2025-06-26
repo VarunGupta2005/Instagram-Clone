@@ -15,7 +15,7 @@ async function signup(req, res, next) {
     next();
   } catch (error) {
     if (error.code === 11000) {
-      res.status(401).json({ success: false, message: "User already exists" });
+      res.status(401).json({ success: false, message: "Username or email already in use" });
     } else {
       res.status(500).json({ success: false, message: "Error in creating user" });
     }

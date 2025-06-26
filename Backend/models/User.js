@@ -28,7 +28,7 @@ const userSchema = new Schema(
     ],
     profilePicture: {
       type: String,
-      default: "",
+      default: "https://icon-library.com/images/no-profile-picture-icon/no-profile-picture-icon-15.jpg",
     },
     bio: {
       type: String,
@@ -48,7 +48,7 @@ const userSchema = new Schema(
     ],
     gender: {
       type: String,
-      enum: ["male", "female", "other"],
+      enum: ["Male", "Female", "Other"],
     },
     bookmarks: [
       {
@@ -58,8 +58,8 @@ const userSchema = new Schema(
     ],
     privacy: {
       type: String,
-      enum: ["public", "private"], // Account privacy settings
-      default: "public", // Default is public
+      enum: ["Public", "Private"], // Account privacy settings
+      default: "Public", // Default is public
     },
     followRequests: [
       {

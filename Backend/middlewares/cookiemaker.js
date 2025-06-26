@@ -13,7 +13,18 @@ function createCookie(req, res, next) {
   res.cookie("ChatAppCookie", token, { maxAge: 1 * 24 * 60 * 60 * 1000 });
   res.status(200).json({
     success: true,
-    message: "User signed in successfully"
+    message: "User signed in successfully",
+    user: {
+      username: User.username,
+      email: User.email,
+      profilePicture: User.profilePicture,
+      _id: User._id,
+      bio: User.bio,
+      gender: User.gender,
+      privacy: User.privacy,
+      bookmarks: User.bookmarks,
+      following: User.following,
+    }
   });
 }
 

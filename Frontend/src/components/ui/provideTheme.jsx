@@ -1,26 +1,25 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleTheme } from '../../redux/themeSlice'; // Adjust path
 
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState(
-    localStorage.getItem('darkMode') === 'true' || 
-    window.matchMedia('(prefers-color-scheme: dark)').matches
-  );
+  const dispatch = useDispatch();
+  // Read the theme mode directly from the Redux store
+  const { mode } = useSelector((state) => state.theme);
+
+  const isDarkMode = mode === 'dark';
 
   useEffect(() => {
-    // Apply dark mode class to HTML element
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    // Save preference to localStorage
-    localStorage.setItem('darkMode', isDarkMode);
-  }, [isDarkMode]);
+    const root = window.document.documentElement;
+    root.classList.remove(isDarkMode ? 'light' : 'dark');
+    root.classList.add(mode);
+  }, [mode, isDarkMode]);
 
+  // The toggle function now just dispatches the Redux action
   const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
+    dispatch(toggleTheme());
   };
 
   return (

@@ -11,22 +11,22 @@ async function createPost(req, res) {
 
     const user = await User.findOne({ username: username });
     if (!user) {
-      return res.status(404).send("User not found");
+      return res.status(404).json({ message: "User not found", success: false });
     }
     if (!image) {
-      return res.status(400).send("Image is required");
+      return res.status(400).json({ message: "Image is required", success: false });
     }
 
     const optimizedImage = await sharp(image.buffer)
       .resize({ width: 800, height: 800, fit: "inside" })
-      .toFormat({ format: "jpeg", quality: 80 })
+      .toFormat("jpeg", { quality: 80 })
       .toBuffer();
 
     const compressedUri = `data:image/jpeg;base64,${optimizedImage.toString("base64")}`;
 
     const cloudResponse = await upload(compressedUri);
     if (!cloudResponse) {
-      return res.status(500).send("Error uploading image");
+      return res.status(500).json({ message: "Failed to upload image", success: false });
     }
 
     const post = new Post({
@@ -39,14 +39,19 @@ async function createPost(req, res) {
     await user.save();
 
     await post.populate({ path: "author", select: "-password" });
-
+    await post.save();
     return res.status(201).send({
       message: "Post created successfully",
-      post
+      post,
+      success: true,
     }
     )
-  } catch {
-    return res.status(500).send("Internal server error");
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      message: "Something went wrong while creating the post",
+      success: false
+    });
   }
 }
 

@@ -26,7 +26,7 @@ const postSchema = new Schema({
       ref: "Comment",
     },
   ],
-});
+}, { timestamps: true });
 
 const Post = mongoose.model("Post", postSchema);
 export default Post;

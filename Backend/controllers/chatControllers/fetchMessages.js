@@ -9,11 +9,11 @@ export const getMessages = async (req, res) => {
     const [member, conversation] = await Promise.all([User.findOne({ username: user }).select("_id conversations"), Conversation.findById(conversationId)])
 
     if (!conversation) {
-      return res.status(404).json({ message: "No past conversation exists", messages: [] });
+      return res.status(404).json({ success: false, message: "No past conversation exists", messages: [] });
     }
 
     if (!conversation.participants.some(part => part.equals(member._id))) {
-      return res.status(403).json({ message: "Unauthorized" });
+      return res.status(403).json({ success: false, message: "Unauthorized" });
     }
 
     let messages = [];
@@ -38,9 +38,9 @@ export const getMessages = async (req, res) => {
       // Flatten results into a single messages array
       messages = results.flat().sort((a, b) => a.createdAt - b.createdAt);
     }
-    res.status(200).json({ messages });
+    res.status(200).json({ success: true, messages: messages });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Could not fetch messages" });
+    res.status(500).json({ success: false, message: "Could not fetch messages" });
   }
 };

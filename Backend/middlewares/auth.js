@@ -21,7 +21,7 @@ function checkCookie(req, res, next) {
   } else {
     return res.status(401).json({
       success: false,
-      message: "No authentication token provided"
+      message: "No authentication token"
     });
   }
 }
