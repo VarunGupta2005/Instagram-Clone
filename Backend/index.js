@@ -9,7 +9,7 @@ import { app, server } from './socket/socket.js'
 import path from "path";
 
 const __dirname = path.resolve();
-const port = 3000;
+const port = process.env.PORT;
 dotenv.config();
 
 app.use(express.static("./public"));
