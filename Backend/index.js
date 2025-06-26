@@ -6,7 +6,9 @@ import dotenv from "dotenv";
 import userRoutes from "./routes/userRoutes.js"
 import PostRoutes from "./routes/handlePost.js"
 import { app, server } from './socket/socket.js'
+import path from "path";
 
+const __dirname = path.resolve();
 const port = 3000;
 dotenv.config();
 
@@ -28,7 +30,10 @@ app.use("/userPost", PostRoutes);
 app.use((err, req, res, next) => {
   res.send("Oki");
 });
-
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/frontend/dist/index.html"));
+});
 server.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
