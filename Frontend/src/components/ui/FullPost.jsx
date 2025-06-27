@@ -60,7 +60,7 @@ const FullPost = ({ showPost, setShow, post }) => {
 
   const handleSave = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/userPost/BookMark', { postId }, { withCredentials: true });
+      const response = await axios.post('https://chat-app-m37n.onrender.com/userPost/BookMark', { postId }, { withCredentials: true });
       if (response.data.success) {
         let newUser;
         if (isSaved) {
@@ -83,7 +83,7 @@ const FullPost = ({ showPost, setShow, post }) => {
 
   const sendComment = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/userPost/comment', { postId, text }, { withCredentials: true });
+      const response = await axios.post('https://chat-app-m37n.onrender.com/userPost/comment', { postId, text }, { withCredentials: true });
       if (response.data.success) {
         toast.success("Comment added successfully");
         setText("");
@@ -110,7 +110,7 @@ const FullPost = ({ showPost, setShow, post }) => {
     if (showPost && postId) {
       const getComments = async () => {
         try {
-          const response = await axios.post('http://localhost:3000/userPost/Comments', { postId }, {
+          const response = await axios.post('https://chat-app-m37n.onrender.com/userPost/Comments', { postId }, {
             withCredentials: true,
           });
           if (response.data.success) {

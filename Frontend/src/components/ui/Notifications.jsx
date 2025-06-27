@@ -12,7 +12,7 @@ const Notifications = ({ setShowNots, showNots, user }) => {
 
   const getFollowRequests = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/user/getRequests', { withCredentials: true });
+      const response = await axios.get('https://chat-app-m37n.onrender.com/user/getRequests', { withCredentials: true });
       if (response.data.success) {
         setReqs(response.data.followRequests);
       } else {
@@ -33,7 +33,7 @@ const Notifications = ({ setShowNots, showNots, user }) => {
 
     setLoadingUsername(username);
     try {
-      const response = await axios.patch('http://localhost:3000/user/handleRequest', { followerId: username, status: status }, { withCredentials: true });
+      const response = await axios.patch('https://chat-app-m37n.onrender.com/user/handleRequest', { followerId: username, status: status }, { withCredentials: true });
       if (response.data.success) {
         toast.success(response.data.message);
 

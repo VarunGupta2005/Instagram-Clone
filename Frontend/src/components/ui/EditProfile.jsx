@@ -86,7 +86,7 @@ export function EditProfile() {
     try {
       e.preventDefault();
       setLoading(true);
-      const res = await axios.patch('http://localhost:3000/user/editProfile', formData, {
+      const res = await axios.patch('https://chat-app-m37n.onrender.com/user/editProfile', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
