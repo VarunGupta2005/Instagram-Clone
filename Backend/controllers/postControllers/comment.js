@@ -15,7 +15,7 @@ async function comment(req, res) {
     }
     const posterId = post.author;
     const [poster, user] = await Promise.all([User.findById(posterId), User.findOne({ username: author })])
-    if (poster.privacy === "Private") {
+    if (poster.privacy === "Private" && !posterId.equals(user._id)) {
       if (!poster.followers.some(id => id.equals(user._id))) return res.status(400).json({
         success: false,
         message: "You cannot comment on this post as the author has a private account and you are not following them."
