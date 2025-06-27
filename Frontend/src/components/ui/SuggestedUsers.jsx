@@ -14,7 +14,7 @@ const SuggestedUsers = () => {
   const handleFollow = async (userId) => {
     try {
       // Pass the userId to the backend API call
-      const response = await axios.patch('http://localhost:3000/user/follow', { followedId: userId }, { withCredentials: true });
+      const response = await axios.patch('https://chat-app-m37n.onrender.com/user/follow', { followedId: userId }, { withCredentials: true });
       if (response.data.success) {
         toast.success(response.data.message);
         const updatedUserList = suggestedUsers.filter(sugg => sugg.username !== userId);

@@ -39,7 +39,7 @@ const PostFrame = ({ post }) => {
 
   const likeDislike = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/userPost/React', { postId }, { withCredentials: true });
+      const response = await axios.post('https://chat-app-m37n.onrender.com/userPost/React', { postId }, { withCredentials: true });
       if (response.data.success) {
         const newCount = liked ? likeCount - 1 : likeCount + 1;
         setLikeCount(newCount);
@@ -61,7 +61,7 @@ const PostFrame = ({ post }) => {
 
   const sendComment = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/userPost/comment', { postId, text }, { withCredentials: true });
+      const response = await axios.post('https://chat-app-m37n.onrender.com/userPost/comment', { postId, text }, { withCredentials: true });
       if (response.data.success) {
         toast.success("Comment added successfully");
         setText("");
@@ -87,7 +87,7 @@ const PostFrame = ({ post }) => {
   const deletePost = async () => {
     try {
       console.log(postId);
-      const response = await axios.post('http://localhost:3000/userPost/DeletePost', { postId }, { withCredentials: true });
+      const response = await axios.post('https://chat-app-m37n.onrender.com/userPost/DeletePost', { postId }, { withCredentials: true });
       if (response.data.success) {
         const newPosts = posts.filter((post) => post._id !== postId);
         dispatch(setPosts(newPosts));
@@ -105,7 +105,7 @@ const PostFrame = ({ post }) => {
 
   const handleSave = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/userPost/BookMark', { postId }, { withCredentials: true });
+      const response = await axios.post('https://chat-app-m37n.onrender.com/userPost/BookMark', { postId }, { withCredentials: true });
       if (response.data.success) {
         let newUser;
         if (bookmarked) {

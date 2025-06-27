@@ -71,7 +71,7 @@ const NewMessageModal = ({ isOpen, onClose, onSelectUser }) => {
       const fetchUsers = async () => {
         setLoading(true);
         try {
-          const res = await axios.get(`http://localhost:3000/user/search?q=${query}`, { withCredentials: true });
+          const res = await axios.get(`https://chat-app-m37n.onrender.com/user/search?q=${query}`, { withCredentials: true });
           if (res.data.success) {
             setResults(res.data.users);
           }
@@ -158,7 +158,7 @@ const MessagesPage = () => {
     const fetchConversations = async () => {
       setIsLoading(true);
       try {
-        const res = await axios.get('http://localhost:3000/user/getConvs', { withCredentials: true });
+        const res = await axios.get('https://chat-app-m37n.onrender.com/user/getConvs', { withCredentials: true });
         if (res.data.success) {
           setConversations(res.data.conversations);
           console.log("Fetched conversations:", res.data.conversations);
@@ -183,7 +183,7 @@ const MessagesPage = () => {
   const handleSelectUser = async (selectedUser) => {
     setIsSearchOpen(false); // 1. Close the modal
     try {
-      const res = await axios.post('http://localhost:3000/user/fetchConversation', { receiver: selectedUser.username }, { withCredentials: true });
+      const res = await axios.post('https://chat-app-m37n.onrender.com/user/fetchConversation', { receiver: selectedUser.username }, { withCredentials: true });
       if (res.data.success && res.data.conversationId) {
 
 

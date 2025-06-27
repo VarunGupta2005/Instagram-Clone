@@ -35,7 +35,7 @@ const Comment = ({ setDialog, showComment, post }) => {
 
   const likeDislike = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/userPost/React', { postId }, { withCredentials: true });
+      const response = await axios.post('https://chat-app-m37n.onrender.com/userPost/React', { postId }, { withCredentials: true });
       if (response.data.success) {
         const newCount = isLiked ? likeCount - 1 : likeCount + 1;
         setLikeCount(newCount);
@@ -61,7 +61,7 @@ const Comment = ({ setDialog, showComment, post }) => {
 
   const handleSave = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/userPost/BookMark', { postId }, { withCredentials: true });
+      const response = await axios.post('https://chat-app-m37n.onrender.com/userPost/BookMark', { postId }, { withCredentials: true });
       if (response.data.success) {
         let newUser;
         if (isSaved) {
@@ -88,7 +88,7 @@ const Comment = ({ setDialog, showComment, post }) => {
 
   const sendComment = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/userPost/comment', { postId, text }, { withCredentials: true });
+      const response = await axios.post('https://chat-app-m37n.onrender.com/userPost/comment', { postId, text }, { withCredentials: true });
       if (response.data.success) {
         toast.success("Comment added successfully");
         setText("");
@@ -113,7 +113,7 @@ const Comment = ({ setDialog, showComment, post }) => {
     if (showComment && postId) {
       const getComments = async () => {
         try {
-          const response = await axios.post('http://localhost:3000/userPost/Comments', { postId }, {
+          const response = await axios.post('https://chat-app-m37n.onrender.com/userPost/Comments', { postId }, {
             withCredentials: true,
           });
           if (response.data.success) {

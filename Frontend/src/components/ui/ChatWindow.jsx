@@ -49,7 +49,7 @@ const ChatWindow = ({ setReRender }) => {
       setIsLoading(true);
       try {
         const res = await axios.post(
-          'http://localhost:3000/user/getMessages',
+          'https://chat-app-m37n.onrender.com/user/getMessages',
           { conversationId: conversationId },
           { withCredentials: true }
         );
@@ -101,7 +101,7 @@ const ChatWindow = ({ setReRender }) => {
     try {
       if (!currentConversationId) {
         const createRes = await axios.post(
-          'http://localhost:3000/user/createConversation',
+          'https://chat-app-m37n.onrender.com/user/createConversation',
           { receiver: chatPartner.username },
           { withCredentials: true }
         );
@@ -116,7 +116,7 @@ const ChatWindow = ({ setReRender }) => {
       }
 
       const sendRes = await axios.post(
-        'http://localhost:3000/user/sendMessage',
+        'https://chat-app-m37n.onrender.com/user/sendMessage',
         { text: messageToSend, conversationId: currentConversationId },
         { withCredentials: true }
       );

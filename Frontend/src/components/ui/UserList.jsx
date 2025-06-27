@@ -35,7 +35,7 @@ const UserListDialog = ({ open, onOpenChange, title, users = [] }) => {
       let response;
       if (title === 'Following') {
         response = await axios.patch(
-          'http://localhost:3000/user/unfollow',
+          'https://chat-app-m37n.onrender.com/user/unfollow',
           { followedId: targetUser.username },
           { withCredentials: true }
         );
@@ -56,7 +56,7 @@ const UserListDialog = ({ open, onOpenChange, title, users = [] }) => {
       }
       else if (title === 'Followers' && currentUser.username === selectedProfile.username) {
         response = await axios.patch(
-          'http://localhost:3000/user/removeFollower',
+          'https://chat-app-m37n.onrender.com/user/removeFollower',
           { followerId: targetUser.username },
           { withCredentials: true }
         );

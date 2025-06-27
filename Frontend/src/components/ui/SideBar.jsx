@@ -61,7 +61,7 @@ const SideBar = () => {
   const dispatch = useDispatch();
   const handleLogOut = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/user/signout", {
+      const res = await axios.get("https://chat-app-m37n.onrender.com/user/signout", {
         withCredentials: true
       })
       if (res.data.success) {

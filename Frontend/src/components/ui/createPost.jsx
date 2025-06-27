@@ -30,7 +30,7 @@ const CreatePost = ({ showCreate, setShowCreate, user }) => {
     try {
       e.preventDefault();
       setLoading(true);
-      const res = await axios.post('http://localhost:3000/userPost/Post', formData, {
+      const res = await axios.post('https://chat-app-m37n.onrender.com/userPost/Post', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

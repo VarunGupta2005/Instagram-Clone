@@ -20,7 +20,7 @@ export const useAuthCheck = () => {
         try {
           // Send the 'user' object as the request body (the 2nd argument)
           const response = await axios.post(
-            'http://localhost:3000/user/verifyState',
+            'https://chat-app-m37n.onrender.com/user/verifyState',
             user, // <--- This is the user object sent as the request body
             { withCredentials: true } // <-- Config object is the 3rd argument
           );

@@ -33,7 +33,7 @@ const SearchPage = () => {
         setLoading(true);
         try {
           const response = await axios.get(
-            `http://localhost:3000/user/search?q=${query}`,
+            `https://chat-app-m37n.onrender.com/user/search?q=${query}`,
             { withCredentials: true }
           );
           if (response.data.success) {

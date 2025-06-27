@@ -11,7 +11,7 @@ const useGetSuggestions = () => {
   useEffect(() => {
     const fetchSuggestions = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/user/getSuggestions", { withCredentials: true });
+        const response = await axios.get("https://chat-app-m37n.onrender.com/user/getSuggestions", { withCredentials: true });
 
         // Assuming your backend API on success directly returns the array of posts.
         if (response.data.success) {

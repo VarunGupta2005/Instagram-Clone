@@ -28,7 +28,7 @@ const Signin = () => {
     // console.log(input)
     try {
       setLoading(true)
-      const res = await axios.post("http://localhost:3000/user/signin", input, {
+      const res = await axios.post("https://chat-app-m37n.onrender.com/user/signin", input, {
         headers: {
           "Content-Type": "application/json"
         },

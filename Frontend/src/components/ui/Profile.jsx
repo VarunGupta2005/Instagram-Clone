@@ -48,13 +48,13 @@ const Profile = () => {
       // The same endpoint is used for both follow and unfollow
       let response;
       if (selectedProfile?.followers?.some(follower => follower._id === user._id)) {
-        response = await axios.patch('http://localhost:3000/user/unfollow',
+        response = await axios.patch('https://chat-app-m37n.onrender.com/user/unfollow',
           { followedId: selectedProfile.username },
           { withCredentials: true }
         );
       }
       else {
-        response = await axios.patch('http://localhost:3000/user/follow',
+        response = await axios.patch('https://chat-app-m37n.onrender.com/user/follow',
           { followedId: selectedProfile.username },
           { withCredentials: true })
       }

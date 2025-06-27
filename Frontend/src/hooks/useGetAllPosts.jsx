@@ -13,7 +13,7 @@ const useGetAllPosts = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/userPost/AllPosts", { withCredentials: true });
+        const response = await axios.get("https://chat-app-m37n.onrender.com/userPost/AllPosts", { withCredentials: true });
 
         // Assuming your backend API on success directly returns the array of posts.
         if (response.data.success) {

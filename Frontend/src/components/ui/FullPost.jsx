@@ -34,7 +34,7 @@ const FullPost = ({ showPost, setShow, post }) => {
 
   const likeDislike = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/userPost/React', { postId }, { withCredentials: true });
+      const response = await axios.post('https://chat-app-m37n.onrender.com/userPost/React', { postId }, { withCredentials: true });
       if (response.data.success) {
         const newCount = isLiked ? likeCount - 1 : likeCount + 1;
         setLikeCount(newCount);

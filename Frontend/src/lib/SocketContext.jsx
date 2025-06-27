@@ -20,7 +20,7 @@ export const SocketContextProvider = ({ children }) => {
     if (userId) {
       // Only create a socket if one doesn't already exist in our ref
       if (!socketRef.current) {
-        const newSocket = io('http://localhost:3000', {
+        const newSocket = io('https://chat-app-m37n.onrender.com', {
           query: { userId: userId },
           transports: ['websocket'],
         });

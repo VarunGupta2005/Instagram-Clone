@@ -12,7 +12,7 @@ const useGetProfile = (reload) => {
     const fetchProfile = async () => {
       try {
         const response = await axios.post(
-          `http://localhost:3000/user/profile/${username}`, {},
+          `https://chat-app-m37n.onrender.com/user/profile/${username}`, {},
           { withCredentials: true }
         );
 
