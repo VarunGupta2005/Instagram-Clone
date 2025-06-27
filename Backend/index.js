@@ -9,7 +9,6 @@ import { app, server } from './socket/socket.js'
 import path from "path";
 
 const __dirname = path.resolve();
-const port = process.env.PORT;
 dotenv.config();
 
 app.use(express.static("./public"));
@@ -20,6 +19,7 @@ app.use(cors({
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.json());
+const port = process.env.PORT;
 
 mongoose.connect(process.env.MONGO_URI).then(() => {
   console.log("Mongodb connected");
