@@ -21,14 +21,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.json());
 
-mongoose.connect("mongodb://127.0.0.1:27017/ChatApp").then(() => {
+mongoose.connect(process.env.MONGO_URI).then(() => {
   console.log("Mongodb connected");
 });
 
 app.use("/user", userRoutes);
 app.use("/userPost", PostRoutes);
 app.use((err, req, res, next) => {
-  res.send("Oki");
+  res.send("Sorry something went wrong");
 });
 app.use(express.static(path.join(__dirname, "/Frontend/dist")));
 app.get("*", (req, res) => {
