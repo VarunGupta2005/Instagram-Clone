@@ -1,32 +1,61 @@
 // src/hooks/useGetAllPosts.jsx
 
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { setPosts } from "../redux/postSlice.js";
+import { setPosts, appendPosts, setLoadingPosts } from "../redux/postSlice.js";
 
-// 1. RENAME the function to start with "use". This makes it a valid custom hook.
 const useGetAllPosts = () => {
   const dispatch = useDispatch();
+  const { currentPage, hasMorePosts, isLoadingPosts } = useSelector(store => store.post);
 
-  // 2. The useEffect hook contains the logic that runs after the component mounts.
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await axios.get("https://chat-app-m37n.onrender.com/userPost/AllPosts", { withCredentials: true });
+  // Function to fetch initial posts (page 1)
+  const fetchInitialPosts = useCallback(async () => {
+    try {
+      dispatch(setLoadingPosts(true));
+      const response = await axios.get("https://chat-app-m37n.onrender.com/userPost/AllPosts?page=1", {
+        withCredentials: true
+      });
 
-        // Assuming your backend API on success directly returns the array of posts.
-        if (response.data.success) {
-          dispatch(setPosts(response.data.posts));
-          console.log(response.data.posts);
-        }
-      } catch (error) {
-        console.error("Error fetching posts:", error);
+      if (response.data.success) {
+        dispatch(setPosts(response.data.posts));
+        console.log('Initial posts fetched:', response.data.posts);
       }
-    };
+    } catch (error) {
+      console.error("Error fetching initial posts:", error);
+    } finally {
+      dispatch(setLoadingPosts(false));
+    }
+  }, [dispatch]);
 
-    fetchPosts();
-  }); // 3. It's best practice to include `dispatch` in the dependency array.
+  // Function to fetch more posts (next page)
+  const fetchMorePosts = useCallback(async () => {
+    if (isLoadingPosts || !hasMorePosts) return;
+
+    try {
+      dispatch(setLoadingPosts(true));
+      const nextPage = currentPage + 1;
+      const response = await axios.get(`https://chat-app-m37n.onrender.com/userPost/AllPosts?page=${nextPage}`, {
+        withCredentials: true
+      });
+
+      if (response.data.success) {
+        dispatch(appendPosts(response.data.posts));
+        console.log(`Page ${nextPage} posts fetched:`, response.data.posts);
+      }
+    } catch (error) {
+      console.error("Error fetching more posts:", error);
+    } finally {
+      dispatch(setLoadingPosts(false));
+    }
+  }, [dispatch, currentPage, hasMorePosts, isLoadingPosts]);
+
+  // Fetch initial posts on component mount
+  useEffect(() => {
+    fetchInitialPosts();
+  }, [fetchInitialPosts]);
+
+  return { fetchMorePosts, hasMorePosts, isLoadingPosts };
 };
 
 export default useGetAllPosts;

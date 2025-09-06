@@ -5,6 +5,11 @@ async function getAllPosts(req, res) {
   try {
     // 1. Get the username of the person making the request.
     const { username } = req;
+    // Get page from query params, default to 1 if not provided
+    const page = parseInt(req.query.page) || 1;
+    const limit = 5; // Number of posts per page
+    const skip = (page - 1) * limit;
+
     if (!username) {
       return res.status(401).json({
         success: false,
@@ -59,7 +64,17 @@ async function getAllPosts(req, res) {
         $sort: { createdAt: -1 },
       },
 
-      // Stage 5 (Optional but Recommended): Reshape the output to look like your original populate
+      // Stage 5: Skip the documents for pagination
+      {
+        $skip: skip
+      },
+
+      // Stage 6: Limit the number of documents returned
+      {
+        $limit: limit
+      },
+
+      // Stage 7 (Optional but Recommended): Reshape the output to look like your original populate
       {
         $project: {
           caption: 1,
