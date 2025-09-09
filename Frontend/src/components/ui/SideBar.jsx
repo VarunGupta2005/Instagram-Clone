@@ -117,8 +117,8 @@ const SideBar = () => {
   return (
     <div className='dark:text-white w-[16%] border-r border-gray-300 dark:border-[#1e1e1e] dark:border-[3px] h-screen flex flex-col gap-4'>
       <div className="pl-4 flex items-center gap-2 p-2    rounded-md  relative pt-4">
-        <FaSquareInstagram className='w-7 h-7' />
-        <h1 className='text-lg font-bold' >InstaGram</h1>
+        {/* <FaSquareInstagram className='w-7 h-7' /> */}
+        <h1 className='text-lg font-bold' >ShareSpace</h1>
       </div>
 
       {

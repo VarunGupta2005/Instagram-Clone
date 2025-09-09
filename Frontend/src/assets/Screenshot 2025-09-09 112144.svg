@@ -1,0 +1,38 @@
+<!-- ShareSpace logo (filled, mask-based, colorable via `color`) -->
+<svg class="sharespace-icon" width="128" height="128" viewBox="0 0 128 128"
+     xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ssTitle">
+  <title id="ssTitle">ShareSpace logo</title>
+
+  <defs>
+    <!-- mask: white = keep, black = punch-through (transparent) -->
+    <mask id="hole-mask" maskUnits="userSpaceOnUse">
+      <!-- start fully visible -->
+      <rect x="0" y="0" width="128" height="128" fill="white"/>
+      <!-- cut-out circles (nodes) -->
+      <circle cx="44" cy="44" r="12" fill="black"/>
+      <circle cx="84" cy="44" r="12" fill="black"/>
+      <circle cx="64" cy="84" r="12" fill="black"/>
+      <!-- cut-out connecting band (rounded-ish triangular connector) -->
+      <path d="M50 52
+               Q64 74 78 52
+               L70 52
+               Q64 64 58 52
+               Z" fill="black"/>
+    </mask>
+
+    <!-- subtle inner shadow shape (optional visual depth when on flat backgrounds) -->
+    <linearGradient id="glow" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#000" stop-opacity="0.06"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- outer rounded-square filled with currentColor; masked so inner shapes become transparent -->
+  <rect x="4" y="4" width="120" height="120" rx="20" ry="20"
+        fill="currentColor" mask="url(#hole-mask)"/>
+
+  <!-- subtle overlay to give a softer feel on light backgrounds (keeps filled-only rule) -->
+  <rect x="4" y="4" width="120" height="120" rx="20" ry="20"
+        fill="url(#glow)" pointer-events="none" />
+
+</svg>

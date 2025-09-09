@@ -52,8 +52,8 @@ const Signin = () => {
     <div className='flex items-center w-screen h-screen justify-center'>
       <form onSubmit={handleSubmmit} className="dark:bg-[#1e1e1e] shadow-2xl rounded-xl flex flex-col gap-5 p-8">
         <div>
-          <h1 className='text-center font-bold text-xl'>INSTAGRAM</h1>
-          <p className='text-center text-sm'>Signin to dive into the world of Instagram</p>
+          <h1 className='text-center font-bold text-xl'>ShareSpace</h1>
+          <p className='text-center text-sm'>Signin to dive into the world of ShareSpace</p>
         </div>
         <div >
           <span className='font-medium'>Email</span>
